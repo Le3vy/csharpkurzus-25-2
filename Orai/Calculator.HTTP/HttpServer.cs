@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -14,7 +12,6 @@ public class HttpServer : IDisposable
     private readonly CancellationTokenSource _cancellationTokenSource;
 
     private bool _disposed;
-
 
     public HttpServer(int port)
     {
@@ -68,4 +65,43 @@ public class HttpServer : IDisposable
         _listener.Stop();
     }
 
+    private async Task ListenTask()
+    {
+        try
+        {
+            while (!_cancellationTokenSource.Token.IsCancellationRequested)
+            {
+                var client = await _listener.AcceptTcpClientAsync(_cancellationTokenSource.Token);
+                await _semaphore.WaitAsync(_cancellationTokenSource.Token);
+                try
+                {
+                    await HandleClient(client, _cancellationTokenSource.Token);
+                }
+                finally
+                {
+                    _semaphore.Release();
+                }
+            }
+        }
+        catch (OperationCanceledException ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+    }
+
+    private async Task HandleClient(TcpClient client, CancellationToken cancellationToken)
+    {
+        using var stream = client.GetStream();
+        try
+        {
+            HttpRequest request = await HttpRequestParser.ParseAsync(stream, _port);
+
+            await SpecialHandlers.HandleNotFound(stream);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            await SpecialHandlers.HandleServerError(stream, ex.Message);
+        }
+    }
 }
