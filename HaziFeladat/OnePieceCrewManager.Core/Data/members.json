@@ -1,0 +1,72 @@
+[
+    {
+        "Name": "Monkey D. Luffy",
+        "Role": 0,  
+        "Bounty": 3000,
+        "BirthYear": 1997,
+        "StrengthLevel": 95
+    },
+    {
+        "Name": "Roronoa Zoro",
+        "Role": 1,
+        "Bounty": 1200,
+        "BirthYear": 1995,
+        "StrengthLevel": 90
+    },
+    {
+        "Name": "Nami",
+        "Role": 2,
+        "Bounty": 366,
+        "BirthYear": 1998,
+        "StrengthLevel": 70
+    },
+    {
+        "Name": "Usopp",
+        "Role": 3,
+        "Bounty": 500,
+        "BirthYear": 1996,
+        "StrengthLevel": 65
+    },
+    {
+        "Name": "Sanji",
+        "Role": 4,
+        "Bounty": 1032,
+        "BirthYear": 1996,
+        "StrengthLevel": 85
+    },
+    {
+        "Name": "Tony Tony Chopper",
+        "Role": 5,
+        "Bounty": 100,
+        "BirthYear": 2000,
+        "StrengthLevel": 60
+    },
+    {
+        "Name": "Nico Robin",
+        "Role": 6,
+        "Bounty": 930,
+        "BirthYear": 1990,
+        "StrengthLevel": 75
+    },
+    {
+        "Name": "Franky",
+        "Role": 7,
+        "Bounty": 394,
+        "BirthYear": 1989,
+        "StrengthLevel": 80
+    },
+    {
+        "Name": "Brook",
+        "Role": 8,
+        "Bounty": 383,
+        "BirthYear": 1945,
+        "StrengthLevel": 70
+    },
+    {
+        "Name": "Jinbe",
+        "Role": 9,
+        "Bounty": 1100,
+        "BirthYear": 1985,
+        "StrengthLevel": 88
+    }
+]
