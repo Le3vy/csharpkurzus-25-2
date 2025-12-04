@@ -20,19 +20,19 @@ public class AddCrewAction : IMenuAction
         Console.Write("Név: "); var name = Console.ReadLine()!;
         Console.Write("Szerep: "); var roleStr = Console.ReadLine()!;
         Console.Write("Bounty: "); var bountyStr = Console.ReadLine()!;
-        Console.Write("Születési év: "); var yearStr = Console.ReadLine()!;
+        Console.Write("Kor: "); var ageStr = Console.ReadLine()!;
         Console.Write("Erősség (1–100): "); var strengthStr = Console.ReadLine()!;
 
         if (!Enum.TryParse<Role>(roleStr, true, out var role) ||
             !int.TryParse(bountyStr, out var bounty) ||
-            !int.TryParse(yearStr, out var year) ||
+            !int.TryParse(ageStr, out var age) ||
             !int.TryParse(strengthStr, out var strength))
         {
             Console.WriteLine("Hiba: érvénytelen adat.");
             return;
         }
 
-        var member = new CrewMember(name, role, bounty, year, strength);
+        var member = new CrewMember(name, role, bounty, age, strength);
         _service.Add(member);
 
         if (_storage.Save(_service.ListAll().ToList()))

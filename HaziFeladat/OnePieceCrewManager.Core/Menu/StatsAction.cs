@@ -12,9 +12,9 @@
 
     public void Execute()
     {
-        var (avgBounty, maxStrength, youngestYear) = _analytics.Stats();
+        var (avgBounty, maxStrength, youngestAge) = _analytics.Stats();
         Console.WriteLine($"Átlag bounty: {avgBounty:F1}M Berry");
         Console.WriteLine($"Legnagyobb erősség: {maxStrength}/100");
-        Console.WriteLine($"Legfiatalabb születési év: {youngestYear}");
+        Console.WriteLine($"Legfiatalabb kor: {youngestAge}");
     }
 }

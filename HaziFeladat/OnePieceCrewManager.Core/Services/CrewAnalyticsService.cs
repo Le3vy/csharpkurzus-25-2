@@ -21,15 +21,15 @@ public class CrewAnalyticsService : ICrewAnalyticsService
                    .Select(g => (Role: g.Key, Count: g.Count()))
                    .OrderByDescending(x => x.Count);
 
-    public (double avgBounty, int maxStrength, int youngestYear) Stats()
+    public (double avgBounty, int maxStrength, int youngestAge) Stats()
     {
         var crew = _repository.ListAll();
         if (crew.Count == 0) return (0, 0, 0);
 
         double avg = crew.Average(c => c.Bounty);
         int maxStrength = crew.Max(c => c.StrengthLevel);
-        int youngestYear = crew.Min(c => c.BirthYear);
+        int youngestAge = crew.Min(c => c.Age);
 
-        return (avg, maxStrength, youngestYear);
+        return (avg, maxStrength, youngestAge);
     }
 }
