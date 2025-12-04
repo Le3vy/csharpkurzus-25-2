@@ -13,7 +13,7 @@
         Musician
     }
 
-    public class CrewMember(
+    public record CrewMember(
         string Name,
         Role Role,
         int Bounty,       // millió Berry

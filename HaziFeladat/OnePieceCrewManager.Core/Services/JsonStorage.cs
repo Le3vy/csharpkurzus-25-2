@@ -26,8 +26,8 @@ namespace OnePieceCrewManager.Core.Services
                 }
 
                 var json = File.ReadAllText(_path);
-                var books = JsonSerializer.Deserialize<List<CrewMember>>(json, _options) ?? new List<CrewMember>();
-                return books;
+                var members = JsonSerializer.Deserialize<List<CrewMember>>(json, _options) ?? new List<CrewMember>();
+                return members;
             }
             catch (JsonException ex)
             {
