@@ -9,7 +9,11 @@ public class AssembleMenu
     {
         string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "members.json");
         var storage = new JsonStorage(dataPath);
-        var service = new CrewMemberService(storage.Load());
+
+        var repository = new CrewRepository(storage.Load());
+        var validator = new CrewValidator();
+        var service = new CrewMemberService(repository, validator);
+        var analytics = new CrewAnalytics(repository);
 
         Console.WriteLine("< One Piece Crew Manager >\n");
 
@@ -91,18 +95,18 @@ public class AssembleMenu
                             Console.WriteLine("Hiba: nem szám.");
                             break;
                         }
-                        var high = service.FindHighBounty(min);
+                        var high = analytics.FindHighBounty(min);
                         if (!high.Any()) Console.WriteLine("Nincs találat.");
                         else foreach (var c in high) Console.WriteLine($"{c.Name} — {c.Bounty}M Berry");
                         break;
 
                     case "5":
-                        foreach (var pair in service.CountByRole())
+                        foreach (var pair in analytics.CountByRole())
                             Console.WriteLine($"{pair.Role}: {pair.Count} tag");
                         break;
 
                     case "6":
-                        var (avgBounty, maxStrength, youngestYear) = service.Stats();
+                        var (avgBounty, maxStrength, youngestYear) = analytics.Stats();
                         Console.WriteLine($"Átlag bounty: {avgBounty:F1}M Berry");
                         Console.WriteLine($"Legnagyobb erősség: {maxStrength}/100");
                         Console.WriteLine($"Legfiatalabb születési év: {youngestYear}");
