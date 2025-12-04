@@ -10,7 +10,8 @@
         Doctor,
         Archaeologist,
         Shipwright,
-        Musician
+        Musician,
+        Helmsman
     }
 
     public record CrewMember(
