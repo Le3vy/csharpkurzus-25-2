@@ -2,7 +2,7 @@
 using OnePieceCrewManager.Core.Exceptions;
 using OnePieceCrewManager.Core.Services;
 
-public class CrewValidator : ICrewValidator
+public class CrewValidatorService : ICrewValidatorService
 {
     public void Validate(CrewMember member, IReadOnlyList<CrewMember> existingCrew)
     {

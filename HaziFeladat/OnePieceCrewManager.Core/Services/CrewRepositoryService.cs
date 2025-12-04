@@ -1,10 +1,10 @@
 ﻿namespace OnePieceCrewManager.Core.Services
 {
-    public class CrewRepository : ICrewRepository
+    public class CrewRepositoryService : ICrewRepositoryService
     {
         private readonly List<CrewMember> _crew = new();
 
-        public CrewRepository(List<CrewMember>? initialCrew = null)
+        public CrewRepositoryService(List<CrewMember>? initialCrew = null)
         {
             if (initialCrew != null) _crew.AddRange(initialCrew);
         }

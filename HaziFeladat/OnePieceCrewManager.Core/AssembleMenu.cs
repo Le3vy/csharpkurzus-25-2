@@ -8,12 +8,12 @@ public class AssembleMenu
     public static void assembleMenu()
     {
         string dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "members.json");
-        var storage = new JsonStorage(dataPath);
+        var storage = new JsonStorageService(dataPath);
 
-        var repository = new CrewRepository(storage.Load());
-        var validator = new CrewValidator();
+        var repository = new CrewRepositoryService(storage.Load());
+        var validator = new CrewValidatorService();
         var service = new CrewMemberService(repository, validator);
-        var analytics = new CrewAnalytics(repository);
+        var analytics = new CrewAnalyticsService(repository);
 
         Console.WriteLine("< One Piece Crew Manager >\n");
 

@@ -1,6 +1,6 @@
 ﻿namespace OnePieceCrewManager.Core.Services
 {
-    public interface ICrewAnalytics
+    public interface ICrewAnalyticsService
     {
         IEnumerable<CrewMember> FindHighBounty(int minBounty);
         IEnumerable<(Role Role, int Count)> CountByRole();

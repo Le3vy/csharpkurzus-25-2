@@ -2,7 +2,7 @@
 
 namespace OnePieceCrewManager.Core.Services
 {
-    public class JsonStorage
+    public class JsonStorageService
     {
         private readonly string _path;
         private readonly JsonSerializerOptions _options = new()
@@ -10,7 +10,7 @@ namespace OnePieceCrewManager.Core.Services
             WriteIndented = true
         };
 
-        public JsonStorage(string path)
+        public JsonStorageService(string path)
         {
             _path = path;
         }

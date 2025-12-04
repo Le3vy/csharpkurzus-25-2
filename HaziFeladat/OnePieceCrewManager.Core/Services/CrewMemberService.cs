@@ -3,10 +3,10 @@
     public class CrewMemberService
     {
 
-        private readonly ICrewRepository _repository;
-        private readonly ICrewValidator _validator;
+        private readonly ICrewRepositoryService _repository;
+        private readonly ICrewValidatorService _validator;
 
-        public CrewMemberService(ICrewRepository repository, ICrewValidator validator)
+        public CrewMemberService(ICrewRepositoryService repository, ICrewValidatorService validator)
         {
             _repository = repository;
             _validator = validator;

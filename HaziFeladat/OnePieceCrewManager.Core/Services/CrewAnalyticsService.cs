@@ -1,11 +1,11 @@
 ﻿using OnePieceCrewManager.Core;
 using OnePieceCrewManager.Core.Services;
 
-public class CrewAnalytics : ICrewAnalytics
+public class CrewAnalyticsService : ICrewAnalyticsService
 {
-    private readonly ICrewRepository _repository;
+    private readonly ICrewRepositoryService _repository;
 
-    public CrewAnalytics(ICrewRepository repository)
+    public CrewAnalyticsService(ICrewRepositoryService repository)
     {
         _repository = repository;
     }
