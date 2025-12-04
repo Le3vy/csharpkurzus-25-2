@@ -18,6 +18,11 @@ public class AddCrewAction : IMenuAction
     public void Execute()
     {
         Console.Write("Név: "); var name = Console.ReadLine()!;
+        Console.WriteLine("Választható szerepek:");
+        foreach (var r in Enum.GetValues<Role>())
+        {
+            Console.WriteLine($"- {r}");
+        }
         Console.Write("Szerep: "); var roleStr = Console.ReadLine()!;
         Console.Write("Bounty: "); var bountyStr = Console.ReadLine()!;
         Console.Write("Kor: "); var ageStr = Console.ReadLine()!;
