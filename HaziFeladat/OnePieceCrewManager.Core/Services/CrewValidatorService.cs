@@ -14,6 +14,12 @@ public class CrewValidatorService : ICrewValidatorService
 
         if (member.StrengthLevel is < 1 or > 100)
             throw new CrewException("Az erősség 1 és 100 között kell legyen.");
+
+        if (member.Role == Role.Captain && existingCrew.Any(c => c.Role == Role.Captain))
+            throw new CrewException("A legénységben csak egy kapitány lehet.");
+
+        if (member.Role == Role.Helmsman && existingCrew.Any(c => c.Role == Role.Helmsman))
+            throw new CrewException("A legénységben csak egy kormányos lehet.");
     }
 }
 

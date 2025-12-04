@@ -23,14 +23,30 @@ public class AddCrewAction : IMenuAction
         Console.Write("Kor: "); var ageStr = Console.ReadLine()!;
         Console.Write("Erősség (1–100): "); var strengthStr = Console.ReadLine()!;
 
-        if (!Enum.TryParse<Role>(roleStr, true, out var role) ||
-            !int.TryParse(bountyStr, out var bounty) ||
-            !int.TryParse(ageStr, out var age) ||
-            !int.TryParse(strengthStr, out var strength))
+        if (!Enum.TryParse<Role>(roleStr, true, out var role))
         {
-            Console.WriteLine("Hiba: érvénytelen adat.");
+            Console.WriteLine("Hiba: ismeretlen szerep. Válassz a felsorolt szerepek közül.");
             return;
         }
+
+        if (!int.TryParse(bountyStr, out var bounty))
+        {
+            Console.WriteLine("Hiba: a bounty értékének pozitív számnak kell lennie (millió Berry).");
+            return;
+        }
+
+        if (!int.TryParse(ageStr, out var age))
+        {
+            Console.WriteLine("Hiba: az életkor értékének pozitív számnak kell lennie.");
+            return;
+        }
+
+        if (!int.TryParse(strengthStr, out var strength))
+        {
+            Console.WriteLine("Hiba: az erősség értékének számnak kell lennie (1–100).");
+            return;
+        }
+
 
         var member = new CrewMember(name, role, bounty, age, strength);
         _service.Add(member);
