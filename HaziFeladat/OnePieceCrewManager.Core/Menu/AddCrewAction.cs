@@ -36,18 +36,33 @@ public class AddCrewAction : IMenuAction
 
         if (!int.TryParse(bountyStr, out var bounty))
         {
+            if (bounty < 0) 
+            {
+                Console.WriteLine("Hiba: a bounty értékének pozitív számnak kell lennie (millió Berry).");
+                return;
+            }
             Console.WriteLine("Hiba: a bounty értékének pozitív számnak kell lennie (millió Berry).");
             return;
         }
 
         if (!int.TryParse(ageStr, out var age))
         {
+            if (age<0) 
+            {
+                Console.WriteLine("Hiba: az életkor értékének pozitív számnak kell lennie.");
+                return;
+            }
             Console.WriteLine("Hiba: az életkor értékének pozitív számnak kell lennie.");
             return;
         }
 
         if (!int.TryParse(strengthStr, out var strength))
         {
+            if (strength < 1 || strength > 100) 
+            {
+                Console.WriteLine("Hiba: az erősség értékének számnak kell lennie (1–100).");
+                return;
+            }
             Console.WriteLine("Hiba: az erősség értékének számnak kell lennie (1–100).");
             return;
         }
