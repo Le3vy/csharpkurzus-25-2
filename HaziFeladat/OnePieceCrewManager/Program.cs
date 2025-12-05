@@ -11,10 +11,12 @@ var actions = new List<IMenuAction>
 {
     new ListCrewAction(repository),
     new AddCrewAction(service, storage),
-    new FindByNameAction(service),
-    new HighBountyAction(analytics),
+    new UpdateCrewAction(service,storage),
+    new DeleteCrewAction(service,storage),
     new CountByRoleAction(analytics),
-    new StatsAction(analytics)
+    new StatsAction(analytics),
+    new FindByNameAction(service),
+    new HighBountyAction(analytics)
 };
 
 var menu = new AssembleMenu(actions);
