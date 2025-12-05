@@ -12,15 +12,15 @@ public class CrewValidatorService : ICrewValidatorService
         CommonValidation(member, existingCrew);
     }
 
-    public void ValidateUpdate(CrewMember member, IReadOnlyList<CrewMember> existingCrew)
+    public void ValidateUpdate(CrewMember member, IReadOnlyList<CrewMember> existingCrew, string originalName)
     {
-        if (existingCrew.Any(c =>
-            !ReferenceEquals(c, member) &&
-            c.Name.Equals(member.Name, StringComparison.OrdinalIgnoreCase)))
+        if (!member.Name.Equals(originalName, StringComparison.OrdinalIgnoreCase))
         {
-            throw new CrewException($"Már létezik ilyen nevű tag: {member.Name}");
+            if (existingCrew.Any(c => c.Name.Equals(member.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new CrewException($"Már létezik ilyen nevű tag: {member.Name}");
+            }
         }
-
         CommonValidation(member, existingCrew);
     }
 

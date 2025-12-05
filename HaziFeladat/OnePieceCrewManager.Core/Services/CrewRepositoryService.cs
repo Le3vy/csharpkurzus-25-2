@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OnePieceCrewManager.Core.Services
+﻿namespace OnePieceCrewManager.Core.Services
 {
     public class CrewRepositoryService : ICrewRepositoryService
     {
@@ -18,11 +16,11 @@ namespace OnePieceCrewManager.Core.Services
         public CrewMember? FindByName(string name) =>
             _crew.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-        public void Update(CrewMember member)
+        public void Update(CrewMember member, string name)
         {
-            var index = _crew.FindIndex(c => c.Name.Equals(member.Name, StringComparison.OrdinalIgnoreCase));
+            var index = _crew.FindIndex(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (index == -1)
-                throw new InvalidOperationException($"Crew member '{member.Name}' not found.");
+                throw new InvalidOperationException($"Crew member '{name}' not found.");
 
             _crew[index] = member;
         }

@@ -29,6 +29,10 @@ public class UpdateCrewAction : IMenuAction
 
         Console.WriteLine("Új adatok megadása (Enter = változatlan):");
 
+        Console.Write($"Név ({existing.Name}): ");
+        var nameStr = Console.ReadLine();
+        var newName = string.IsNullOrWhiteSpace(nameStr) ? existing.Name : nameStr;
+
         Console.Write($"Szerep ({existing.Role}): ");
         var roleStr = Console.ReadLine();
         var role = existing.Role;
@@ -53,8 +57,8 @@ public class UpdateCrewAction : IMenuAction
         if (!string.IsNullOrWhiteSpace(strengthStr) && int.TryParse(strengthStr, out var parsedStrength) && parsedStrength >= 1 && parsedStrength <= 100)
             strength = parsedStrength;
 
-        var updated = new CrewMember(existing.Name, role, bounty, age, strength);
-        _service.Update(updated);
+        var updated = new CrewMember(newName, role, bounty, age, strength);
+        _service.Update(updated,name);
 
         if (_storage.Save(_service.ListAll().ToList()))
             Console.WriteLine("Tag sikeresen frissítve és mentve.");

@@ -22,10 +22,10 @@
 
         public CrewMember? FindByName(string name) => _repository.FindByName(name);
 
-        public void Update(CrewMember member)
-        {
-            _validator.ValidateUpdate(member, _repository.ListAll());
-            _repository.Update(member);
+        public void Update(CrewMember member, string name)
+        {            
+            _validator.ValidateUpdate(member, _repository.ListAll(),name);            
+            _repository.Update(member, name);
         }
 
         public void Delete(CrewMember member)
