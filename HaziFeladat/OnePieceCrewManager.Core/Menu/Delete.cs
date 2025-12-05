@@ -1,5 +1,4 @@
-﻿using OnePieceCrewManager.Core;
-using OnePieceCrewManager.Core.Services;
+﻿using OnePieceCrewManager.Core.Services;
 
 public class DeleteCrewAction : IMenuAction
 {
