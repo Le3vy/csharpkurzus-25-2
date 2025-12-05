@@ -4,7 +4,7 @@ public class FindByNameAction : IMenuAction
 {
     private readonly CrewMemberService _service;
 
-    public string Key => "3";
+    public string Key => "7";
     public string Description => "Keresés név alapján";
 
     public FindByNameAction(CrewMemberService service)

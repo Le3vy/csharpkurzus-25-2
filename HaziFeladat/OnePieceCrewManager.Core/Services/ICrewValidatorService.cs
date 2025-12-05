@@ -2,7 +2,8 @@
 {
     public interface ICrewValidatorService
     {
-        void Validate(CrewMember member, IReadOnlyList<CrewMember> existingCrew);
-    }
+        void ValidateNew(CrewMember member, IReadOnlyList<CrewMember> existingCrew);
 
+        void ValidateUpdate(CrewMember member, IReadOnlyList<CrewMember> existingCrew);
+    }
 }

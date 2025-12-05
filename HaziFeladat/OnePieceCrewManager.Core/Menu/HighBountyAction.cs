@@ -2,7 +2,7 @@
 {
     private readonly CrewAnalyticsService _analytics;
 
-    public string Key => "4";
+    public string Key => "8";
     public string Description => "Nagy bounty-s tagok";
 
     public HighBountyAction(CrewAnalyticsService analytics)

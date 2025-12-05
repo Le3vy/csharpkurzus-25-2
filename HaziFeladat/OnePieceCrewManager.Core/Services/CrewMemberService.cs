@@ -14,7 +14,7 @@
 
         public void Add(CrewMember member)
         {
-            _validator.Validate(member, _repository.ListAll());
+            _validator.ValidateNew(member, _repository.ListAll());
             _repository.Add(member);
         }
 
@@ -22,6 +22,15 @@
 
         public CrewMember? FindByName(string name) => _repository.FindByName(name);
 
+        public void Update(CrewMember member)
+        {
+            _validator.ValidateUpdate(member, _repository.ListAll());
+            _repository.Update(member);
+        }
 
+        public void Delete(CrewMember member)
+        {
+            _repository.Delete(member);
+        }
     }
 }

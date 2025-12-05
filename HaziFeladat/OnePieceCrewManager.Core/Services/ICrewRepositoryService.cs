@@ -5,6 +5,8 @@
         IReadOnlyList<CrewMember> ListAll();
         void Add(CrewMember member);
         CrewMember? FindByName(string name);
+        void Update(CrewMember member);
+        void Delete(CrewMember member);
     }
 
 }
